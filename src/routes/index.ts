@@ -1,7 +1,7 @@
-import { Router } from "express";
+import { Router } from 'express';
 
-import Paths from "../common/Paths";
-import CardRoutes from "./CardRoutes";
+import Paths from '../common/Paths';
+import CardRoutes from './CardRoutes';
 
 /******************************************************************************
                                 Variables
@@ -16,7 +16,7 @@ const cardRouter = Router();
 
 cardRouter.post(
   Paths.Cards.GetAllArchenemyCards,
-  CardRoutes.getAllArchenemyCards
+  CardRoutes.getAllArchenemyCards,
 );
 
 // Add UserRouter

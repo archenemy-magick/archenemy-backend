@@ -39,6 +39,7 @@
     "@stylistic/eslint-plugin-ts": "^4.2.0",
     "@swc/core": "^1.11.12",
     "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.19",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.1",
     "@types/find": "^0.2.4",

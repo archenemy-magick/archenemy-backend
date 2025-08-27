@@ -1,7 +1,7 @@
 export default {
-  Base: "/api",
+  Base: '/api',
   Cards: {
-    Base: "/cards",
-    GetAllArchenemyCards: "/archenemy",
+    Base: '/cards',
+    GetAllArchenemyCards: '/archenemy',
   },
 } as const;
