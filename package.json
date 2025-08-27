@@ -10,7 +10,8 @@
     "start": "NODE_ENV=production node -r ./config.js ./dist",
     "test": "NODE_ENV=test ts-node ./spec",
     "test:hot": "nodemon --exec \"npm run test\" --watch ./src --watch ./spec --ext .ts",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepare": "husky"
   },
   "engines": {
     "node": "22"
@@ -24,6 +25,7 @@
     "express": "^4.21.2",
     "express-async-errors": "^3.1.1",
     "helmet": "^8.1.0",
+    "husky": "^9.1.7",
     "inserturlparams": "^2.0.5",
     "jet-env": "^1.1.4",
     "jet-logger": "^2.0.1",
