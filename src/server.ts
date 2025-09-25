@@ -14,6 +14,7 @@ import ENV from "@src/common/ENV";
 import HttpStatusCodes from "@src/common/HttpStatusCodes";
 import { RouteError } from "@src/common/route-errors";
 import { NodeEnvs } from "@src/common/constants";
+import { PrismaClient } from "@prisma/client";
 
 /******************************************************************************
                                 Setup
@@ -42,6 +43,10 @@ if (ENV.NodeEnv === NodeEnvs.Production) {
   }
 }
 
+// TODO: move this into a separate file for config?
+// TODO: figure our type issues, along with routing; how do we add a route for users and such?
+export const prisma = new PrismaClient();
+
 // Add APIs, must be after middleware
 app.use(Paths.Base, BaseRouter);
 
@@ -60,6 +65,7 @@ app.use((err: Error, _: Request, res: Response, next: NextFunction) => {
 
 // **** FrontEnd Content **** //
 
+// TODO: get rid of all views related stuff
 // Set views directory (html)
 const viewsDir = path.join(__dirname, "views");
 app.set("views", viewsDir);
@@ -77,9 +83,5 @@ app.get("/", (_: Request, res: Response) => {
 app.get("/users", (_: Request, res: Response) => {
   return res.sendFile("users.html", { root: viewsDir });
 });
-
-/******************************************************************************
-                                Export default
-******************************************************************************/
 
 export default app;

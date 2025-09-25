@@ -2,3 +2,5 @@ node_modules
 temp
 package-lock.json
 dist
+/generated/prisma
+*.log

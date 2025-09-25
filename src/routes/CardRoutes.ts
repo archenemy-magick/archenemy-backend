@@ -26,7 +26,7 @@ const instance = axios.create({
 ******************************************************************************/
 
 /**
- * Get random card.
+ * Get all archenemy cards
  */
 async function getAllArchenemyCards(_: IReq, res: IRes) {
   // TODO: error handling

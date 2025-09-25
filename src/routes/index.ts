@@ -1,29 +1,23 @@
-import { Router } from 'express';
+import { Router } from "express";
 
-import Paths from '../common/Paths';
-import CardRoutes from './CardRoutes';
-
-/******************************************************************************
-                                Variables
-******************************************************************************/
+import Paths from "../common/Paths";
+import CardRoutes from "./CardRoutes";
+import UserRoutes from "./UserRoutes";
 
 const apiRouter = Router();
 
-// ** Add UserRouter ** //
-
-// Init router
 const cardRouter = Router();
+const userRouter = Router();
 
 cardRouter.post(
   Paths.Cards.GetAllArchenemyCards,
-  CardRoutes.getAllArchenemyCards,
+  CardRoutes.getAllArchenemyCards
 );
 
-// Add UserRouter
-apiRouter.use(Paths.Cards.Base, cardRouter);
+userRouter.post(Paths.User.CheckIfEmailExists, UserRoutes.checkIfEmailExists);
 
-/******************************************************************************
-                                Export default
-******************************************************************************/
+// Add CardRouter
+apiRouter.use(Paths.Cards.Base, cardRouter);
+apiRouter.use(Paths.User.Base, userRouter);
 
 export default apiRouter;

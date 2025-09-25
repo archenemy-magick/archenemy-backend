@@ -10,13 +10,14 @@ export default tseslint.config(
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   {
-    ignores: ["**/node_modules/*", "**/*.mjs", "**/*.js"],
+    ignores: ["**/node_modules/*", "**/*.mjs", "**/*.js", "**/generated/**"],
   },
   {
     languageOptions: {
       parserOptions: {
         project: "./tsconfig.json",
         warnOnUnsupportedTypeScriptVersion: false,
+        projectFolderIgnoreList: ["**/node_modules/**", "generate/**"],
       },
     },
   },

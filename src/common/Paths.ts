@@ -1,7 +1,11 @@
 export default {
-  Base: '/api',
+  Base: "/api",
   Cards: {
-    Base: '/cards',
-    GetAllArchenemyCards: '/archenemy',
+    Base: "/cards",
+    GetAllArchenemyCards: "/archenemy",
+  },
+  User: {
+    Base: "/user",
+    CheckIfEmailExists: "/check-email",
   },
 } as const;
