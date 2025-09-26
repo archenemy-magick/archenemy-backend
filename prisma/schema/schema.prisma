@@ -14,6 +14,5 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 // TODO: commit this, merge it, then add seeds for the cards. Then maybe add some decks to see if we can load them with a default
 // user (that's hard set on the FE), then try adding decks, then worry about auth
