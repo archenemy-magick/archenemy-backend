@@ -75,6 +75,7 @@
     "typescript-eslint": "^8.27.0"
   },
   "prisma": {
-    "seed": "ts-node prisma/seeds/seed.ts"
+    "seed": "ts-node prisma/seeds/seed.ts",
+    "schema": "prisma/schema"
   }
 }

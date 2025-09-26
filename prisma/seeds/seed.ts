@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 async function main() {
-  const alice = await prisma.user.upsert({
+  const liliana = await prisma.user.upsert({
     where: { email: "liliana@archenemy.io" },
     update: {},
     create: {
@@ -13,7 +13,7 @@ async function main() {
       username: "the_necromancer",
     },
   });
-  const bob = await prisma.user.upsert({
+  const windgrace = await prisma.user.upsert({
     where: { email: "windgrace@archenemy.io" },
     update: {},
     create: {
@@ -25,7 +25,7 @@ async function main() {
       username: "the_land_kitty",
     },
   });
-  console.log({ alice, bob });
+  console.log({ liliana, windgrace });
 }
 main()
   .then(async () => {
