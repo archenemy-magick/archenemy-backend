@@ -1,12 +1,34 @@
-// // prisma/seed-data/users.ts
-// import { PrismaClient } from '@prisma/client';
+import rawArchenemyCards from "./rawArchenemyCards.json";
+import { PrismaClient } from "@prisma/client";
 
-// export async function seedUsers(prisma: PrismaClient) {
-//   await prisma.user.createMany({
-//     data: [
-//       { name: 'Alice', email: 'alice@example.com' },
-//       { name: 'Bob', email: 'bob@example.com' },
-//     ],
-//   });
-//   console.log('Users seeded.');
-// }
+const prisma = new PrismaClient();
+
+interface RawCard {
+  id: string;
+  name: string;
+  lang: string;
+  releasedAt: string;
+  uri: string;
+  normalImage: string;
+  largeImage: string;
+  borderCropImage: string;
+  typeLine: string;
+  oracleText: string;
+  flavorText?: string;
+  reprint: boolean;
+  setId: string;
+  set: string;
+  setName: string;
+  rulingsUri: string;
+  rarity: string;
+  artist: string;
+  artistIds: string[];
+}
+
+async function main() {
+  await prisma.archenemyCard.createMany({
+    data: rawArchenemyCards as RawCard[],
+  });
+}
+
+export default main;

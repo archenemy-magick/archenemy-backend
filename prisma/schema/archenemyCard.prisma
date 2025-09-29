@@ -1,98 +1,62 @@
-model Card {
+model ArchenemyCard {
   // Core identifiers
-  id           String @id @default(cuid())
-  scryfallId   String @unique @map("scryfall_id")
-  oracleId     String @map("oracle_id")
-  
+  id         String @id @default(cuid())
+
   // Basic card information
-  name         String
-  lang         String @default("en")
-  releasedAt   DateTime @map("released_at")
-  
+  name       String
+  lang       String   @default("en")
+  releasedAt String
+
   // Game mechanics - the important stuff
-  manaCost     String @map("mana_cost")
-  cmc          Float
-  typeLine     String @map("type_line")
-  oracleText   String? @map("oracle_text")
-  flavorText   String? @map("flavor_text")
-  colors       String[]
-  colorIdentity String[] @map("color_identity")
-  keywords     String[]
-  
+  typeLine      String
+  oracleText    String?
+  flavorText    String?
+
   // Set information
-  setCode      String @map("set_code")
-  setName      String @map("set_name")
-  setType      String @map("set_type")
-  collectorNumber String @map("collector_number")
-  
+  setName         String
+  set             String
+  setId           String
+
   // Card details
-  rarity       String
-  artist       String
-  layout       String
-  borderColor  String @map("border_color")
-  frame        String
-  
-  // Essential flags
-  foil         Boolean @default(false)
-  nonfoil      Boolean @default(true)
-  digital      Boolean @default(false)
-  
+  rarity      String
+  artist      String
+  artistIds  String[]
+  reprint    Boolean
+  rulingsUri String
+
+
   // Image URLs - using large image, others commented for future use
-  imageLarge   String @map("image_large")
-  // imageSmall   String? @map("image_small")
-  // imageNormal  String? @map("image_normal")
-  // imagePng     String? @map("image_png")
-  // imageArtCrop String? @map("image_art_crop")
-  // imageBorderCrop String? @map("image_border_crop")
-  
-  // Legal formats - commented out for Archenemy-only use case
-  // legalStandard  String? @map("legal_standard")
-  // legalModern    String? @map("legal_modern")
-  // legalLegacy    String? @map("legal_legacy")
-  // legalVintage   String? @map("legal_vintage")
-  // legalCommander String? @map("legal_commander")
-  // legalPioneer   String? @map("legal_pioneer")
-  // legalHistoric  String? @map("legal_historic")
-  // legalPauper    String? @map("legal_pauper")
-  // legalBrawl     String? @map("legal_brawl")
-  
-  // Pricing - commented out for future use
-  // priceUsd       String? @map("price_usd")
-  // priceUsdFoil   String? @map("price_usd_foil")
-  // priceEur       String? @map("price_eur")
-  // priceEurFoil   String? @map("price_eur_foil")
-  // priceTix       String? @map("price_tix")
+  normalImage String
+  largeImage  String
+  borderCropImage String
   
   // Relationships
-  deckCards    DeckCard[]
-  
-  @@map("Cards")
+  deckCards ArchenemyDeckCard[]
 }
 
-model Deck {
-  id          String     @id @default(cuid())
+model ArchenemyDeck {
+  id          String   @id @default(cuid())
   name        String
   description String?
-  // cardIds     String[] @map("card_ids") // Old approach - replaced by junction table
-  createdAt   DateTime   @default(now()) @map("created_at")
-  updatedAt   DateTime   @updatedAt @map("updated_at")
-  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
   // Relationships
-  deckCards   DeckCard[]
-  
-  @@map("Decks")
+  deckCards ArchenemyDeckCard[]
+
+  User   User? @relation(fields: [userId], references: [id])
+  userId Int?
 }
 
 // Junction table for many-to-many relationship
-model DeckCard {
+model ArchenemyDeckCard {
   id     String @id @default(cuid())
-  deckId String @map("deck_id")
-  cardId String @map("card_id")
-  // quantity Int @default(1) // Removed since it's always 1
-  
-  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
-  card   Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
-  
+  deckId String
+  cardId String
+
+  deck ArchenemyDeck @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  card ArchenemyCard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
   @@unique([deckId, cardId])
   @@map("DeckCards")
 }
