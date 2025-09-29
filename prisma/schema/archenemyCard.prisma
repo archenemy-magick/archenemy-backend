@@ -1,68 +1,35 @@
 model ArchenemyCard {
   // Core identifiers
   id         String @id @default(cuid())
-  scryfallId String @unique
-  oracleId   String
 
   // Basic card information
   name       String
   lang       String   @default("en")
-  releasedAt DateTime
+  releasedAt String
 
   // Game mechanics - the important stuff
-  manaCost      String
-  cmc           Float
   typeLine      String
   oracleText    String?
   flavorText    String?
-  colors        String[]
-  colorIdentity String[]
-  keywords      String[]
 
   // Set information
-  setCode         String
   setName         String
-  setType         String
-  collectorNumber String
+  set             String
+  setId           String
 
   // Card details
   rarity      String
   artist      String
-  layout      String
-  borderColor String
-  frame       String
+  artistIds  String[]
+  reprint    Boolean
+  rulingsUri String
 
-  // Essential flags
-  foil    Boolean @default(false)
-  nonfoil Boolean @default(true)
-  digital Boolean @default(false)
 
   // Image URLs - using large image, others commented for future use
-  imageLarge String
-  // imageSmall   String?
-  // imageNormal  String?
-  // imagePng     String?
-  // imageArtCrop String?
-  // imageBorderCrop String?
-
-  // Legal formats - commented out for Archenemy-only use case
-  // legalStandard  String?
-  // legalModern    String?
-  // legalLegacy    String?
-  // legalVintage   String?
-  // legalCommander String?
-  // legalPioneer   String?
-  // legalHistoric  String?
-  // legalPauper    String?
-  // legalBrawl     String?
-
-  // Pricing - commented out for future use
-  // priceUsd       String?
-  // priceUsdFoil   String?
-  // priceEur       String?
-  // priceEurFoil   String?
-  // priceTix       String?
-
+  normalImage String
+  largeImage  String
+  borderCropImage String
+  
   // Relationships
   deckCards ArchenemyDeckCard[]
 }

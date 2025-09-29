@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import archenemySeed from "./archenemyseed";
 const prisma = new PrismaClient();
 async function main() {
   const liliana = await prisma.user.upsert({
@@ -25,6 +26,8 @@ async function main() {
       username: "the_land_kitty",
     },
   });
+
+  await archenemySeed();
   console.log({ liliana, windgrace });
 }
 main()
