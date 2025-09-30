@@ -1,0 +1,1 @@
+export { getAllArchenemyCards } from "./ArchenemyCardService";

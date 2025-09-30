@@ -11,7 +11,7 @@ const userRouter = Router();
 
 cardRouter.post(
   Paths.Cards.GetAllArchenemyCards,
-  CardRoutes.getAllArchenemyCards
+  CardRoutes.fetchAllArchenemyCards
 );
 
 userRouter.post(Paths.User.CheckIfEmailExists, UserRoutes.checkIfEmailExists);
