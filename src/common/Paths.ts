@@ -8,4 +8,10 @@ export default {
     Base: "/user",
     CheckIfEmailExists: "/check-email",
   },
+  Decks: {
+    Base: "/decks",
+    GetAllDecks: "/all",
+    GetDeckById: "/:deckId",
+    GetByUserId: "/user/:userId",
+  },
 } as const;

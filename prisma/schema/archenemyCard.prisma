@@ -40,6 +40,9 @@ model ArchenemyDeck {
   description String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  isPublic    Boolean  @default(true)
+  isArchived  Boolean  @default(false)
+
 
   // Relationships
   deckCards ArchenemyDeckCard[]

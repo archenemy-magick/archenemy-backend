@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import archenemySeed from "./archenemyseed";
+import decksSeed from "./decksseed";
+
 const prisma = new PrismaClient();
 async function main() {
   const liliana = await prisma.user.upsert({
@@ -12,6 +14,7 @@ async function main() {
       password: "securepassword",
       salt: "randomsalt",
       username: "the_necromancer",
+      id: 1,
     },
   });
   const windgrace = await prisma.user.upsert({
@@ -24,10 +27,13 @@ async function main() {
       password: "anothersecurepassword",
       salt: "anotherrandomsalt",
       username: "the_land_kitty",
+      id: 2,
     },
   });
 
   await archenemySeed();
+  await decksSeed();
+
   console.log({ liliana, windgrace });
 }
 main()

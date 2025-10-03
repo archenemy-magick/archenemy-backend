@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-interface RawCard {
+export interface RawCard {
   id: string;
   name: string;
   lang: string;
@@ -28,6 +28,7 @@ interface RawCard {
 async function main() {
   await prisma.archenemyCard.createMany({
     data: rawArchenemyCards as RawCard[],
+    skipDuplicates: true,
   });
 }
 

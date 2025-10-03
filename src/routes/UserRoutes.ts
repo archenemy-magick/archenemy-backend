@@ -1,5 +1,5 @@
 import { IReq, IRes } from "./common";
-import { UserService } from "@src/services/UserService";
+import { checkIfEmailExists as checkIfEmailExistsService } from "@src/services";
 
 // check if the user email exists
 async function checkIfEmailExists(req: IReq, res: IRes): Promise<void> {
@@ -8,7 +8,7 @@ async function checkIfEmailExists(req: IReq, res: IRes): Promise<void> {
     res.status(400).json({ error: "Email must be a string" });
     return;
   }
-  const user = await UserService.checkIfEmailExists(email);
+  const user = await checkIfEmailExistsService(email);
 
   if (user === null) {
     res.status(200).json({ exists: false });
