@@ -17,6 +17,7 @@ cardRouter.post(
 );
 
 deckRouter.get(Paths.Decks.GetAllDecks, DeckRoutes.fetchAllDecks);
+deckRouter.post(Paths.Decks.CreateDeck, DeckRoutes.createDeck);
 
 userRouter.post(Paths.User.CheckIfEmailExists, UserRoutes.checkIfEmailExists);
 

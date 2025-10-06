@@ -2,7 +2,10 @@ import { IReq, IRes } from "./common";
 import { checkIfEmailExists as checkIfEmailExistsService } from "@src/services";
 
 // check if the user email exists
-async function checkIfEmailExists(req: IReq, res: IRes): Promise<void> {
+async function checkIfEmailExists(
+  req: IReq<{ email: unknown }>,
+  res: IRes
+): Promise<void> {
   const email = req.body?.email;
   if (typeof email !== "string") {
     res.status(400).json({ error: "Email must be a string" });

@@ -13,5 +13,6 @@ export default {
     GetAllDecks: "/all",
     GetDeckById: "/:deckId",
     GetByUserId: "/user/:userId",
+    CreateDeck: "/create",
   },
 } as const;

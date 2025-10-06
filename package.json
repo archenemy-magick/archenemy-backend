@@ -40,7 +40,8 @@
     "jsonfile": "^6.1.0",
     "module-alias": "^2.2.3",
     "morgan": "^1.10.0",
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
