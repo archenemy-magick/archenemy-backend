@@ -28,4 +28,32 @@ async function getAllDecks() {
     });
 }
 
-export { getAllDecks };
+async function saveArchenemyDeck({
+  deck,
+  userId,
+}: {
+  deck: { name: string; description?: string; cardIds: string[] };
+  userId: number;
+}) {
+  return await prisma.archenemyDeck
+    .create({
+      data: {
+        name: deck.name,
+        description: deck.description,
+        userId,
+        deckCards: {
+          createMany: {
+            data: deck.cardIds.map((cardId) => ({
+              cardId,
+            })),
+          },
+        },
+      },
+    })
+    .then((newDeck) => newDeck)
+    .catch((e: unknown) => {
+      console.log("error while creating archenemy deck", e);
+    });
+}
+
+export { getAllDecks, saveArchenemyDeck };
