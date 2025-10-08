@@ -1,4 +1,6 @@
-# Archenemy specific stuff
+This repo is deprecated. Thanks for all the good times :)
+
+<!-- # Archenemy specific stuff
 
 - install postgres 17
 - create DB archenemyprisma
@@ -66,4 +68,4 @@ Check for typescript errors.
 
 ## Additional Notes
 
-- If `npm run dev` gives you issues with bcrypt on MacOS you may need to run: `npm rebuild bcrypt --build-from-source`.
+- If `npm run dev` gives you issues with bcrypt on MacOS you may need to run: `npm rebuild bcrypt --build-from-source`. -->
